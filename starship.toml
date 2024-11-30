@@ -1,32 +1,51 @@
-# ~/.config/starship.toml
-
-# Use custom format
+# This config is inspired by Pastel Powerline
 
 
-# Disable the blank line at the start of the prompt
-add_newline = true
+format = """
+[](#2d2d34)\
+$os\
+[](bg:#BF616A fg:#2d2d34)\
+$directory\
+[](fg:#BF616A bg:#718355)\
+$git_branch\
+$git_status\
+[](fg:#718355 bg:#33658A)\
+$time\
+[ ](fg:#33658A)\
+"""
 
-
-# Shows the username
 [username]
-style_user = "white bold"
-style_root = "black bold"
-format = "[$user]($style) "
 disabled = false
 show_always = true
+style_user = "bg:#3B4252"
+style_root = "bg:#3B4252"
+format = '[$user ]($style)'
+
+[os]
+disabled = false
+style = "bg:#2d2d34"
+
+# Add your specefic os logo
+[os.symbols]
+Ubuntu = " "
 
 [directory]
-truncation_length = 8
+style = "bg:#BF616A"
+format = "[ $path ]($style)"
+truncation_length = 3
 truncation_symbol = "…/"
-home_symbol = " ~"
-read_only_style = "197"
-read_only = " 🔒 "
-format = "at [$path]($style)[$read_only]($read_only_style) "
-use_os_path_sep = true
 
 [git_branch]
-symbol = "  " 
-format = "on [$symbol$branch]($style) "
+symbol = " "
+style = "bg:#718355"
+format = '[ $symbol $branch ]($style)'
 
-[nodejs]
-format = "via [🤖 $version](bold green) "
+[git_status]
+style = "bg:#718355"
+format = '[$all_status$ahead_behind ]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#33658A"
+format = '[  $time ]($style)'
